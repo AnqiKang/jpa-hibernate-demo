@@ -12,19 +12,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	@Autowired
-	private CourseRepository courseRepository;
+    @Autowired
+    private CourseRepository courseRepository;
 
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
 
-	@Override
-	public void run(String... args) throws Exception {
-		Course course = courseRepository.findById(10001L);
-		logger.info("Course 10001L -> {}", course);
+    @Override
+    public void run(String... args) throws Exception {
+        Course course = courseRepository.findById(10001L);
+        logger.info("Course 10001L -> {}", course);
 
-	}
+        courseRepository.save(new Course("Java Core"));
+
+    }
 }
