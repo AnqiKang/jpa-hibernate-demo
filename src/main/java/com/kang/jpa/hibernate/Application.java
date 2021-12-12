@@ -23,10 +23,8 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Course course = courseRepository.findById(10001L);
-        logger.info("Course 10001L -> {}", course);
+        courseRepository.testEntityManager();
 
-        courseRepository.save(new Course("Java Core"));
 
     }
 }

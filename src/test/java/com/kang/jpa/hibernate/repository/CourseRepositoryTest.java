@@ -31,13 +31,13 @@ class CourseRepositoryTest {
 
     @Test
     @DirtiesContext
-    public void deleteById_basic(){
+    public void deleteById_basic() {
         courseRepository.deleteById(10002L);
         assertNull(courseRepository.findById(10002L));
     }
 
     @Test
-    public void save_basic(){
+    public void save_basic() {
         // get a course from DB
         Course course = courseRepository.findById(10001L);
         assertEquals("JPA in 50 steps", course.getName());
@@ -54,11 +54,10 @@ class CourseRepositoryTest {
 
     @Test
     @DirtiesContext
-    public void testEntityManager(){
+    public void testEntityManager() {
         courseRepository.testEntityManager();
 
     }
-
 
 
 }
