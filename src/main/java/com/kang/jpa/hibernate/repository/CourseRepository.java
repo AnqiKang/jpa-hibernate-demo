@@ -40,15 +40,11 @@ public class CourseRepository {
     public void testEntityManager() {
         Course course1 = new Course("Web Services");
         em.persist(course1);
-        Course course2 = new Course("Angular JS");
-        em.persist(course2);
-        em.flush();
 
         course1.setName("Web Service updated");
-        course2.setName("Angular JS updated");
 
-        em.refresh(course1);
-        em.flush();
+        Course course2 = findById(10001L);
+        course2.setName("JPA in 50 steps -- updated");
 
     }
 }
