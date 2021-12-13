@@ -2,6 +2,7 @@ package com.kang.jpa.hibernate;
 
 import com.kang.jpa.hibernate.entity.Course;
 import com.kang.jpa.hibernate.repository.CourseRepository;
+import com.kang.jpa.hibernate.repository.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,16 @@ public class Application implements CommandLineRunner {
     @Autowired
     private CourseRepository courseRepository;
 
+    @Autowired
+    private StudentRepository studentRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
     @Override
     public void run(String... args) throws Exception {
-        courseRepository.testEntityManager();
+        studentRepository.saveStudentWithPassport();
 
 
     }
