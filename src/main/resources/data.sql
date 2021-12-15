@@ -8,7 +8,7 @@ values (10003, 'MicroService', sysdate(), sysdate());
 insert into passport(id, number)
 values (40001, 'E5895');
 insert into passport(id, number)
-values (40002, 'E1403');
+values (40002, 'E1234');
 insert into passport(id, number)
 values (40003, 'E3687');
 
