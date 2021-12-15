@@ -21,3 +21,13 @@ Relationship:
         *ToOne : Eager Fetching
 
         *ToMany: Lazy Fetching
+
+Inheritance Hierarchies  -- 4 options
+
+    Single table : if we really concerned about performance
+    
+    Joined: if we really concerned about Data integrity, and data quality
+    
+    Table Per Class  
+    
+    MappedSuperclass 
