@@ -1,5 +1,6 @@
 package com.kang.jpa.hibernate.repository;
 
+import com.kang.jpa.hibernate.entity.Course;
 import com.kang.jpa.hibernate.entity.Passport;
 import com.kang.jpa.hibernate.entity.Student;
 import org.slf4j.Logger;
@@ -29,6 +30,27 @@ public class StudentRepository {
 
         Student student = new Student("Mike");
         student.setPassport(passport);
+        em.persist(student);
+    }
+
+    public void insertStudentAndCourseHardCode() {
+        Student student = new Student("Jack");
+        Course course = new Course("Jenkins pipeline");
+
+        em.persist(student);
+        em.persist(course);
+
+        student.addCourse(course);
+        course.addStudent(student);
+        em.persist(student);
+
+    }
+    public void insertStudentAndCourse(Student student, Course course){
+        em.persist(student);
+        em.persist(course);
+
+        student.addCourse(course);
+        course.addStudent(student);
         em.persist(student);
     }
 
