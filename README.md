@@ -8,6 +8,8 @@ JPQL + Named Query
 
 Native Query
 
+Criteria Query
+
 Relationship:
 
     One to One : Uni direction + Bi direction 
@@ -31,3 +33,7 @@ Inheritance Hierarchies  -- 4 options
     Table Per Class  
     
     MappedSuperclass 
+    
+   
+Transaction Management
+
