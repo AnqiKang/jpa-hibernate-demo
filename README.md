@@ -10,4 +10,14 @@ Native Query
 
 Relationship:
 
-One to One : Uni direction + Bi direction 
+    One to One : Uni direction + Bi direction 
+
+    One to Many :
+
+    Many to Many : Joint Table 
+
+      Fetching Type: default 
+
+        *ToOne : Eager Fetching
+
+        *ToMany: Lazy Fetching
