@@ -1,7 +1,9 @@
 package com.kang.jpa.hibernate.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -15,7 +17,9 @@ import java.util.List;
         @NamedQuery(name = "query_get_50_steps_courses", query = "select c from Course c where c.name like '%50 steps'")
 })
 
-
+@Cacheable
+@SQLDelete(sql = "update course set is_deleted = true where id = ?")
+@Where(clause = "is_deleted = false")
 public class Course {
 
     @Id
@@ -37,6 +41,13 @@ public class Course {
 
     @CreationTimestamp
     private LocalDateTime createdDate;
+
+    private boolean isDeleted;
+
+    @PreRemove
+    private void preRemove(){
+        this.isDeleted = true;
+    }
 
     public Course() {
     }
@@ -81,11 +92,9 @@ public class Course {
         this.students.remove(student);
     }
 
+
     @Override
     public String toString() {
-        return "Course{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return "Course{}";
     }
 }

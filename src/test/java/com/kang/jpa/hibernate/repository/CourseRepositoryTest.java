@@ -3,6 +3,7 @@ package com.kang.jpa.hibernate.repository;
 import com.kang.jpa.hibernate.Application;
 import com.kang.jpa.hibernate.entity.Course;
 import com.kang.jpa.hibernate.entity.Review;
+import org.hibernate.graph.SubGraph;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -11,9 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityGraph;
 import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
+import javax.persistence.Subgraph;
+
+
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -30,10 +36,24 @@ class CourseRepositoryTest {
     @Autowired
     EntityManager em;
 
+
     @Test
     public void findById_basic() {
         Course course = courseRepository.findById(10001L);
         assertEquals("JPA in 50 steps", course.getName());
+    }
+
+    @Test
+    @Transactional
+    public void findById_firstLevelCacheDemo() {
+        Course course = courseRepository.findById(10001L);
+        logger.info("First Course Retrieved -> {}", course);
+
+        Course course1 = courseRepository.findById(10001L);
+        logger.info("First Course Retrieved -> {}", course1);
+
+        assertEquals("JPA in 50 steps", course.getName());
+        assertEquals("JPA in 50 steps", course1.getName());
     }
 
     @Test

@@ -1,9 +1,9 @@
-insert into course(id, name, created_date, last_updated_date)
-values (10001, 'JPA in 50 steps', sysdate(), sysdate());
-insert into course(id, name, created_date, last_updated_date)
-values (10002, 'SpringBoot', sysdate(), sysdate());
-insert into course(id, name, created_date, last_updated_date)
-values (10003, 'MicroService', sysdate(), sysdate());
+insert into course(id, name, created_date, last_updated_date, is_deleted)
+values (10001, 'JPA in 50 steps', sysdate(), sysdate(), false);
+insert into course(id, name, created_date, last_updated_date, is_deleted)
+values (10002, 'SpringBoot', sysdate(), sysdate(), false);
+insert into course(id, name, created_date, last_updated_date, is_deleted)
+values (10003, 'MicroService', sysdate(), sysdate(), false);
 
 insert into passport(id, number)
 values (40001, 'E5895');
@@ -22,11 +22,11 @@ values (20003, 'Jingyu', 40003);
 
 
 insert into review(id, rating, description, course_id)
-values (50001, '5', 'Great Course', 10001);
+values (50001, 'FIVE', 'Great Course', 10001);
 insert into review(id, rating, description, course_id)
-values (50002, '4', 'Wonderful Course', 10001);
+values (50002, 'THREE', 'Wonderful Course', 10001);
 insert into review(id, rating, description, course_id)
-values (50003, '5', 'Awesome Course', 10001);
+values (50003, 'FOUR', 'Awesome Course', 10001);
 
 insert into student_course(student_id, course_id)
 values (20001, 10001);

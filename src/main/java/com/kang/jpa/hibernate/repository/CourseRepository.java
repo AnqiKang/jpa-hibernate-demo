@@ -2,6 +2,7 @@ package com.kang.jpa.hibernate.repository;
 
 import com.kang.jpa.hibernate.entity.Course;
 import com.kang.jpa.hibernate.entity.Review;
+import com.kang.jpa.hibernate.entity.ReviewRating;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,8 +56,8 @@ public class CourseRepository {
         Course course = findById(10003L);
         logger.info("Course.getReviews()-> {}", course.getReviews());
         // add 2 reviews to it  and set review to specific course, set the course on the review
-        Review review1 = new Review("4", "new Review 1");
-        Review review2 = new Review("5", "new Review 2");
+        Review review1 = new Review(ReviewRating.FIVE, "new Review 1");
+        Review review2 = new Review(ReviewRating.FOUR, "new Review 2");
         // set relationship
         course.addReview(review1);
         review1.setCourse(course);
